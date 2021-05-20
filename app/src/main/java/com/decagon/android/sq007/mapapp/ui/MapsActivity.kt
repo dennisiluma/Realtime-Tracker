@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -83,8 +84,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     // Use LocationRequest to get my location and LocationCallback to keep tracking my location
     private fun getMyLocationUpdates() {
         locationRequest = LocationRequest.create().apply {
-//            interval = 20000
-//            fastestInterval = 10000
+            interval = 2000
+            fastestInterval = 4000
             priority = LocationRequest.PRIORITY_HIGH_ACCURACY
 //            maxWaitTime = 100
         }
@@ -98,11 +99,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                     val locationlogging = MyLocationLogging(location.latitude, location.longitude)
                     databaseRef.child("DennisLocation").setValue(locationlogging)
                         .addOnSuccessListener {
-                            Toast.makeText(
-                                applicationContext,
-                                "Locations written into the database",
-                                Toast.LENGTH_SHORT
-                            ).show()
+                            Log.d("Success", "Location Logeed into the data base")
                         }
                         .addOnFailureListener {
                             Toast.makeText(
@@ -115,9 +112,20 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
                     // display my current location from call back location getter
                     val latLng = LatLng(location.latitude, location.longitude)
-                    myMap.addMarker(MarkerOptions().position(latLng).title("Dennis"))
+                    myMap.clear()
+//                    myMap.addMarker(MarkerOptions().position(latLng).title("Dennis")
 //                      .icon(bitmapDescriptorFromVector(applicationContext, R.mipmap.ic_dennis_round)))
-                    myMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 20f))
+//                    myMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 20f))
+
+
+
+                   var markerOptionDennis = myMap.addMarker(MarkerOptions().position(latLng).title("Dennis")
+                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)))
+                    markerOptionDennis?.position = latLng
+                    myMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15f))
+
+
+
                 }
             }
         }
@@ -134,7 +142,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 ).show()
             }
 
-            //     @SuppressLint("LongLogTag")
+
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.exists()) {
 
@@ -148,15 +156,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                     if (femiLat != null && femiLong != null) {
                         val femiLoc = LatLng(femiLat, femiLong)
 
-                        femiMap.addMarker(MarkerOptions().position(femiLoc).title("Femi"))
-                        femiMap.animateCamera(CameraUpdateFactory.newLatLngZoom(femiLoc, 20f))
+//                        femiMap.clear()
+                        femiMap.addMarker(MarkerOptions().position(femiLoc).title("Femi")
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)))
 
-                        Toast.makeText(
-                            applicationContext,
-                            "Femi Location accessed",
-                            Toast.LENGTH_SHORT
-                        )
-                            .show()
+                        femiMap.animateCamera(CameraUpdateFactory.newLatLngZoom(femiLoc, 15f))
+
                     }
                 }
             }

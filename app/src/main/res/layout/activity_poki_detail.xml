@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".pokemonapp.ui.PokiDetailActivity">
+
+    <TextView
+        android:id="@+id/tvdName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:text="Pokimon Detail"/>
+
+    <ImageView
+        android:id="@+id/ivdImage"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvdWeight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="weight"/>
+
+            <TextView
+                android:id="@+id/tvdHeigth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Heigth"/>
+
+            <TextView
+                android:id="@+id/tvdAbilities"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Abilities"/>
+
+
+            <TextView
+                android:id="@+id/tvdBase_Exp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Base_Exp"/>
+
+            <TextView
+                android:id="@+id/tvdForm_List"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Form_List"/>
+
+            <TextView
+                android:id="@+id/tvdGame_Index"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Game_Index"/>
+
+            <TextView
+                android:id="@+id/tvdHeld_Items"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Held_Items"/>
+
+            <TextView
+                android:id="@+id/tvdMovies_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Movies-List"/>
+
+            <TextView
+                android:id="@+id/tvdOrder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Order"/>
+
+            <TextView
+                android:id="@+id/tvdSpecies"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Species"/>
+
+            <TextView
+                android:id="@+id/tvdStarts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Starts"/>
+
+            <TextView
+                android:id="@+id/tvdType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Type"/>
+
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</LinearLayout>
